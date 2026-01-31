@@ -5,7 +5,7 @@ import Services from './assets/components/Services';
 import Process from './assets/components/Process';
 import Works from './assets/components/Work';
 import Testimonials from './assets/components/Testimonials';
-import CTA from './assets/components/CTA';
+
 import Contact from './assets/components/Contact';
 import './App.css';
 
