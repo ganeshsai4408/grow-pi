@@ -2,13 +2,13 @@
 
 .nav-container {
   position: absolute;
-  top: 20px;
+  top: 5px;
   left: 53%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 100px;
   padding: 0;
   z-index: 10;
   font-family: 'Nunito Sans', sans-serif;
@@ -17,8 +17,16 @@
 }
 
 .nav-logo {
-  height: 100px;
+  height: 140px;
   width: auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
 }
 
 .nav-pill {

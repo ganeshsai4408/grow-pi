@@ -5,9 +5,10 @@ import logo from '../images/logo.png';
 const Navbar = () => {
   return (
     <nav className="nav-container">
-      {/* Logo on the left */}
-      <img src={logo} alt="Logo" className="nav-logo" />
-
+    {/* Logo on the left */}
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="nav-logo" />
+      </div>
       {/* The White Floating Pill */}
       <div className="nav-pill">
         <ul className="nav-links">
