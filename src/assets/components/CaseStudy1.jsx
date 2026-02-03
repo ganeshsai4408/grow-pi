@@ -6,23 +6,29 @@ import scrbleMain from '../images/case-study/scrble/scrble-main.png';
 import scrbleImg1 from '../images/case-study/scrble/scrble-img1.png';
 import scrbleImg2 from '../images/case-study/scrble/scrble-img2.png';
 
+// Static data - moved outside component
+const navItems = [
+  { id: 'overview', label: 'Project Overview' },
+  { id: 'problem', label: 'Problem & Requirements' },
+  { id: 'strategy', label: 'Strategy & UX Approach' },
+  { id: 'design', label: 'Design System & Experience' },
+  { id: 'development', label: 'Development & Outcome' },
+  { id: 'gallery', label: 'Gallery' },
+];
+
+const services = [
+  'WebDevelopment',
+  'Landing Page',
+  'UI/UXEcommerce',
+];
+
 const CaseStudy = () => {
   const [activeSection, setActiveSection] = useState('overview');
 
-  const navItems = [
-    { id: 'overview', label: 'Project Overview' },
-    { id: 'problem', label: 'Problem & Requirements' },
-    { id: 'strategy', label: 'Strategy & UX Approach' },
-    { id: 'design', label: 'Design System & Experience' },
-    { id: 'development', label: 'Development & Outcome' },
-    { id: 'gallery', label: 'Gallery' },
-  ];
-
-  const services = [
-    'WebDevelopment',
-    'Landing Page',
-    'UI/UXEcommerce',
-  ];
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

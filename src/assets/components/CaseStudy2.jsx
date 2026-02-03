@@ -6,23 +6,24 @@ import scrbleMain from '../images/case-study/BL/BL-main.png';
 import scrbleImg1 from '../images/case-study/BL/BL-img1.png';
 import scrbleImg2 from '../images/case-study/BL/BL-img2.png';
 
+// Static data - moved outside component to fix ESLint warning
+const navItems = [
+  { id: 'overview', label: 'Project Overview' },
+  { id: 'problem', label: 'Problem & Requirements' },
+  { id: 'strategy', label: 'Strategy & UX Approach' },
+  { id: 'design', label: 'Design, Build & Tech Stack' },
+  { id: 'outcome', label: 'Outcome' },
+  { id: 'gallery', label: 'Gallery' },
+];
+
+const services = [
+  'WebDevelopment',
+  'Landing Page',
+  'Professional Website',
+];
+
 const CaseStudy = () => {
   const [activeSection, setActiveSection] = useState('overview');
-
-  const navItems = [
-    { id: 'overview', label: 'Project Overview' },
-    { id: 'problem', label: 'Problem & Requirements' },
-    { id: 'strategy', label: 'Strategy & UX Approach' },
-    { id: 'design', label: 'Design, Build & Tech Stack' },
-    { id: 'outcome', label: 'Outcome' },
-    { id: 'gallery', label: 'Gallery' },
-  ];
-
-  const services = [
-    'WebDevelopment',
-    'Landing Page',
-    'Professional Website',
-  ];
 
   // Scroll to top on component mount
   useEffect(() => {
