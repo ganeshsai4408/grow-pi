@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './Work.css';
 
 // Import work images
@@ -20,6 +21,7 @@ const Work = () => {
       image: blImage,
       logo: blLogo,
       liveUrl: 'https://www.example.com/bl', // Replace with actual URL
+      caseStudyUrl: '/case-study/bl',
     },
     {
       id: 2,
@@ -27,6 +29,7 @@ const Work = () => {
       image: scImage,
       logo: scLogo,
       liveUrl: 'https://www.example.com/sc', // Replace with actual URL
+      caseStudyUrl: '/case-study/scrble', // Update when you have more case studies
     },
   ];
 
@@ -79,43 +82,46 @@ const Work = () => {
                   ease: [0.4, 0, 0.2, 1],
                 }}
               >
-                <motion.a
-                  href={work.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={work.caseStudyUrl}
                   className="button-container"
-                  animate={{
-                    y: hoveredId === work.id ? 0 : 20,
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  style={{ textDecoration: 'none' }}
                 >
-                  <img
-                    src={work.logo}
-                    alt={work.title}
-                    className="button-logo"
-                  />
-                  <div className="case-study-button">
-                    <span className="button-text">Casestudy</span>
-                    <svg
-                      className="arrow-icon"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-                    </svg>
-                  </div>
-                </motion.a>
+                  <motion.div
+                    className="button-container-inner"
+                    animate={{
+                      y: hoveredId === work.id ? 0 : 20,
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <img
+                      src={work.logo}
+                      alt={work.title}
+                      className="button-logo"
+                    />
+                    <div className="case-study-button">
+                      <span className="button-text">Casestudy</span>
+                      <svg
+                        className="arrow-icon"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                      </svg>
+                    </div>
+                  </motion.div>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

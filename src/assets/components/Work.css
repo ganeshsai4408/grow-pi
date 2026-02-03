@@ -73,10 +73,16 @@
 /* Button Container (Transparent) */
 .button-container {
   display: flex;
+  width: 90%;
+  text-decoration: none;
+}
+
+.button-container-inner {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  width: 90%;
+  width: 100%;
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.15);
   text-decoration: none;
@@ -86,7 +92,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.button-container:hover {
+.button-container-inner:hover {
   background: rgba(255, 255, 255, 0.25);
 }
 
