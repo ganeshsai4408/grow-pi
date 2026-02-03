@@ -126,6 +126,52 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .title-white,
+  .title-muted {
+    font-size: 3.5rem;
+  }
+  
+  .founders-tag {
+    left: 10%;
+  }
+  
+  .freelancers-tag {
+    right: 10%;
+  }
+  
+  .business-owners-tag {
+    right: 10%;
+  }
+}
+
+@media (max-width: 992px) {
+  .title-white,
+  .title-muted {
+    font-size: 3rem;
+  }
+  
+  .floating-tag {
+    font-size: 0.85rem;
+    padding: 7px 14px;
+  }
+  
+  .founders-tag {
+    bottom: 28%;
+    left: 8%;
+  }
+  
+  .freelancers-tag {
+    top: 18%;
+    right: 8%;
+  }
+  
+  .business-owners-tag {
+    bottom: 18%;
+    right: 8%;
+  }
+}
+
 @media (max-width: 768px) {
   .title-white,
   .title-muted {
@@ -139,21 +185,100 @@
   
   .floating-tag {
     font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+  
+  .cursor-icon {
+    font-size: 1.8rem;
+  }
+  
+  /* Maintain similar relative positioning as desktop */
+  .founders-tag {
+    bottom: 25%;
+    left: 8%;
+  }
+  
+  .freelancers-tag {
+    top: 20%;
+    right: 8%;
+  }
+  
+  .business-owners-tag {
+    bottom: 20%;
+    right: 12%;
+  }
+  
+  /* Keep cursor positions relative to tags consistent */
+  .founders-cursor {
+    top: -22px;
+    right: -22px;
+  }
+  
+  .freelancers-cursor {
+    top: 20px;
+    left: -25px;
+  }
+  
+  .business-owners-cursor {
+    top: -20px;
+    left: -22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 0 15px;
+  }
+  
+  .title-white,
+  .title-muted {
+    font-size: 2rem;
+  }
+  
+  .hero-cta {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    box-shadow: 0 6px 0 0 #5364AA;
+  }
+  
+  .floating-tag {
+    font-size: 0.7rem;
     padding: 6px 12px;
   }
   
+  .cursor-icon {
+    font-size: 1.5rem;
+  }
+  
+  /* Keep proportional positioning similar to desktop */
   .founders-tag {
-    bottom: 30%;
+    bottom: 25%;
     left: 5%;
   }
   
   .freelancers-tag {
-    top: 15%;
+    top: 20%;
     right: 5%;
   }
   
   .business-owners-tag {
-    bottom: 15%;
-    right: 5%;
+    bottom: 20%;
+    right: 8%;
+  }
+  
+  /* Maintain cursor proportions */
+  .founders-cursor {
+    top: -18px;
+    right: -18px;
+  }
+  
+  .freelancers-cursor {
+    top: 18px;
+    left: -20px;
+  }
+  
+  .business-owners-cursor {
+    top: -16px;
+    left: -18px;
   }
 }

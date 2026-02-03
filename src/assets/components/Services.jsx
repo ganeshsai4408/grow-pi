@@ -36,17 +36,36 @@ const servicesData = [
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? servicesData.length - 1 : prev - 1));
+    if (!isMobile) {
+      setActiveIndex((prev) => (prev === 0 ? servicesData.length - 1 : prev - 1));
+    }
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev === servicesData.length - 1 ? 0 : prev + 1));
+    if (!isMobile) {
+      setActiveIndex((prev) => (prev === servicesData.length - 1 ? 0 : prev + 1));
+    }
   };
 
-  // Keyboard navigation
+  // Keyboard navigation (disabled on mobile)
   useEffect(() => {
+    if (isMobile) return; // Disable keyboard navigation on mobile
+    
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowLeft') {
         handlePrev();
@@ -59,7 +78,7 @@ const Services = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [activeIndex]);
+  }, [activeIndex, isMobile]);
 
   // Calculate track offset to center the active card
   const calculateTrackOffset = () => {
@@ -85,10 +104,10 @@ const Services = () => {
         Services
       </motion.h2>
 
-      <div className="services-slider-container">
+      <div className={`services-slider-container ${isMobile ? 'mobile-view' : ''}`}>
         <motion.div 
-          className="services-slider-track"
-          animate={{
+          className={`services-slider-track ${isMobile ? 'mobile-stack' : ''}`}
+          animate={isMobile ? {} : {
             x: trackOffset
           }}
           transition={{
@@ -97,17 +116,17 @@ const Services = () => {
           }}
         >
           {servicesData.map((service, index) => {
-            const isActive = index === activeIndex;
+            const isActive = isMobile ? true : index === activeIndex; // Always active on mobile
             
-            // Calculate parallax offset based on distance from center
+            // Calculate parallax offset based on distance from center (disabled on mobile)
             const distanceFromCenter = index - activeIndex;
-            const parallaxOffset = isActive ? 0 : distanceFromCenter * -15;
+            const parallaxOffset = (isActive || isMobile) ? 0 : distanceFromCenter * -15;
 
             return (
               <motion.div
                 key={service.id}
-                className={`service-card ${isActive ? 'active' : 'inactive'}`}
-                animate={{
+                className={`service-card ${isActive ? 'active' : 'inactive'} ${isMobile ? 'mobile-card' : ''}`}
+                animate={isMobile ? {} : {
                   width: isActive ? 390 : 350,
                   height: isActive ? 520 : 340,
                 }}
@@ -120,7 +139,7 @@ const Services = () => {
                   <motion.div
                     className="card-image-container"
                     style={{ overflow: 'hidden' }}
-                    animate={{
+                    animate={isMobile ? {} : {
                       height: isActive ? 240 : 220,
                     }}
                     transition={{
@@ -132,13 +151,13 @@ const Services = () => {
                       src={service.image}
                       alt={service.title}
                       className="card-image"
-                      style={{
+                      style={isMobile ? {} : {
                         x: parallaxOffset,
                       }}
                     />
                   </motion.div>
 
-                  {isActive && (
+                  {(isActive || isMobile) && (
                     <div className="card-content">
                       <span className="card-tag">{service.tag}</span>
                       <p className="card-description">{service.description}</p>
@@ -150,48 +169,50 @@ const Services = () => {
           })}
         </motion.div>
 
-        <div className="services-navigation">
-          <motion.button
-            className="nav-button prev"
-            onClick={handlePrev}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Previous service"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {!isMobile && (
+          <div className="services-navigation">
+            <motion.button
+              className="nav-button prev"
+              onClick={handlePrev}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Previous service"
             >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </motion.button>
-          <motion.button
-            className="nav-button next"
-            onClick={handleNext}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Next service"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </motion.button>
+            <motion.button
+              className="nav-button next"
+              onClick={handleNext}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Next service"
             >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </motion.button>
-        </div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );

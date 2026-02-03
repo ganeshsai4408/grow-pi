@@ -10,7 +10,7 @@
   align-items: center;
   gap: 100px;
   padding: 0;
-  z-index: 10;
+  z-index: 1000;
   font-family: 'Nunito Sans', sans-serif;
   width: 100%;
   max-width: 1200px;
@@ -23,7 +23,7 @@
 
 .logo-container {
   display: flex;
-  align-items: center;                                                    
+  align-items: center;
   justify-content: center;
   width: 100px;
   height: 100px;
@@ -58,7 +58,9 @@
   transition: opacity 0.2s;
 }
 
-
+.nav-links a:hover {
+  opacity: 0.7;
+}
 
 .discovery-btn {
   background-color: #5e6472;
@@ -77,25 +79,212 @@
   background-color: #4a505e;
 }
 
+/* Hamburger Menu Styles */
+.hamburger-container {
+  display: none;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+  display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #FBF7F2;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 999;
+  padding-top: 80px;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu-content {
+  padding: 40px 30px;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-nav-links a {
+  text-decoration: none;
+  color: #212844;
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mobile-nav-links a:hover {
+  color: #5e6472;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .nav-container {
-    flex-direction: column;
-    gap: 10px;
-    top: 10px;
-  }
-  
-  .nav-links {
-    gap: 20px;
+    gap: 60px;
   }
   
   .nav-pill {
-    padding: 8px 20px;
+    padding: 10px 40px;
+    gap: 60px;
   }
   
-  .discovery-btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+  .nav-links {
+    gap: 50px;
   }
 }
 
+@media (max-width: 992px) {
+  .nav-container {
+    gap: 40px;
+    left: 50%;
+  }
+  
+  .nav-pill {
+    padding: 10px 30px;
+    gap: 40px;
+  }
+  
+  .nav-links {
+    gap: 30px;
+  }
+  
+  .nav-links a {
+    font-size: 1rem;
+  }
+  
+  .nav-logo {
+    height: 120px;
+  }
+  
+  .discovery-btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: space-between;
+    padding: 0 20px;
+    width: calc(100% - 40px);
+    max-width: none;
+    gap: 0;
+  }
+  
+  .nav-logo {
+    height: 80px;
+  }
+  
+  .logo-container {
+    width: auto;
+    height: auto;
+  }
+  
+  .nav-pill,
+  .discovery-btn {
+    display: none !important;
+  }
+  
+  .hamburger-container {
+    display: block !important;
+  }
+  
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    top: 15px;
+    padding: 0 15px;
+    width: calc(100% - 30px);
+  }
+  
+  .nav-logo {
+    height: 70px;
+  }
+  
+  .mobile-menu {
+    width: 250px;
+  }
+  
+  .mobile-menu-content {
+    padding: 30px 20px;
+  }
+  
+  .mobile-nav-links {
+    gap: 25px;
+  }
+  
+  .mobile-nav-links a {
+    font-size: 1.1rem;
+  }
+}
