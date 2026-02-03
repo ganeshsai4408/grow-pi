@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import './Services.css';
 
@@ -50,17 +50,17 @@ const Services = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (!isMobile) {
       setActiveIndex((prev) => (prev === 0 ? servicesData.length - 1 : prev - 1));
     }
-  };
+  }, [isMobile]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (!isMobile) {
       setActiveIndex((prev) => (prev === servicesData.length - 1 ? 0 : prev + 1));
     }
-  };
+  }, [isMobile]);
 
   // Keyboard navigation (disabled on mobile)
   useEffect(() => {
@@ -78,7 +78,7 @@ const Services = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [activeIndex, isMobile]);
+  }, [handlePrev, handleNext, isMobile]);
 
   // Calculate track offset to center the active card
   const calculateTrackOffset = () => {

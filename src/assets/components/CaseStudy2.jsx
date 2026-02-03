@@ -46,7 +46,7 @@ const CaseStudy = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [navItems]);
+  }, []); // navItems is a constant, no dependencies needed
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
