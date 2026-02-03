@@ -46,7 +46,7 @@ const CaseStudy = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
