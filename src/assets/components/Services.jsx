@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import './Services.css';
 
 // Import images
-import portfolioImg from '../images/porfolio(1).jpg';
-import ecommerceImg from '../images/ecommerce(1).png';
-import shopifyImg from '../images/shopify(1).png';
+import portfolioImg from '../images/portfolio (1).png';
+import ecommerceImg from '../images/ecom.png';
+import shopifyImg from '../images/shopify.png';
 
 const servicesData = [
   {
@@ -140,7 +140,7 @@ const Services = () => {
                     className="card-image-container"
                     style={{ overflow: 'hidden' }}
                     animate={isMobile ? {} : {
-                      height: isActive ? 240 : 220,
+                      height: isActive ? 260 : 200,
                     }}
                     transition={{
                       duration: 0.1,

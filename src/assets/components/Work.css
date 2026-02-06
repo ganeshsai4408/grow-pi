@@ -68,6 +68,12 @@
   justify-content: center;
   padding-bottom: 30px;
   border-radius: 32px;
+  pointer-events: none;
+}
+
+.work-overlay.mobile-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
 }
 
 /* Button Container (Transparent) */
@@ -75,6 +81,7 @@
   display: flex;
   width: 90%;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 .button-container-inner {

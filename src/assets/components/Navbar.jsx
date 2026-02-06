@@ -4,7 +4,12 @@ import logo from '../images/logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -46,8 +51,8 @@ const Navbar = () => {
             </ul>
           </div>
           
-          <button className="discovery-btn">
-            Book a Discovery call ↗
+          <button className="discovery-btn" onClick={handleContactClick}>
+            Contact Us ↗
           </button>
         </>
       )}

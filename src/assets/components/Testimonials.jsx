@@ -7,16 +7,16 @@ const Testimonials = () => {
     {
       id: 1,
       initial: 'P',
-      text: 'Tell us about your goals and project requirementsTell us about your goals and project requirementsTell us about your goals and project requirements',
-      author: 'pravallika Scrble',
+      text: 'Scrble website (brand vision focus)GrowPi brought my Scrble brand to life with a beautiful and thoughtfully designed website.They clearly understood my style, audience, and business goals from the start.The final result feels premium, smooth, and perfectly aligned with my brand identity',
+      author: 'Pravallika Scrble',
       bgColor: '#5364AA',
       textColor: '#ffffff'
     },
     {
       id: 2,
       initial: 'B',
-      text: 'Tell us about your goals and project requirementsTell us about your goals and project requirementsTell us about your goals and project requirements',
-      author: 'Bhaghya lakshmi Scrble',
+      text: 'Architect portfolio (clarity & professionalism focus)GrowPi built a clean and professional portfolio website that explains my architectural services with clarity.Their step-by-step collaboration and attention to detail made the entire process easy and reliable.Now my services are presented in a structured, confident, and highly professional way',
+      author: 'Bhaghya lakshmi Architect',
       bgColor: '#FFF1E099',
       textColor: '#000000'
     }

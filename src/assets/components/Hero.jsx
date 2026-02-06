@@ -3,6 +3,13 @@ import './Hero.css';
 import { BsCursor } from 'react-icons/bs';
 
 const Hero = () => {
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="hero-section">
       {/* Floating Tags with cursor icons */}
@@ -28,8 +35,8 @@ const Hero = () => {
           <span className="title-muted">and grow faster</span>
         </h1>
         
-        <button className="hero-cta">
-          Book a Discovery call
+        <button className="hero-cta" onClick={handleContactClick}>
+          Contact Us
         </button>
       </div>
     </section>

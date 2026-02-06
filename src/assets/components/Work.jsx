@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Work.css';
@@ -13,6 +13,18 @@ import scLogo from '../images/works/logos/sc-logo.png';
 
 const Work = () => {
   const [hoveredId, setHoveredId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const worksData = [
     {
@@ -50,8 +62,8 @@ const Work = () => {
           <motion.div
             key={work.id}
             className="work-card"
-            onMouseEnter={() => setHoveredId(work.id)}
-            onMouseLeave={() => setHoveredId(null)}
+            onMouseEnter={() => !isMobile && setHoveredId(work.id)}
+            onMouseLeave={() => !isMobile && setHoveredId(null)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -62,23 +74,23 @@ const Work = () => {
                 src={work.image}
                 alt={work.title}
                 className="work-image"
-                animate={{
+                animate={!isMobile ? {
                   scale: hoveredId === work.id ? 1.05 : 1,
-                }}
+                } : {}}
                 transition={{
-                  duration: 0.4,
+                  duration: 0.3,
                   ease: [0.4, 0, 0.2, 1],
                 }}
               />
 
-              {/* Overlay that appears on hover */}
+              {/* Overlay that appears on hover/mobile */}
               <motion.div
-                className="work-overlay"
-                animate={{
+                className={`work-overlay ${isMobile ? 'mobile-overlay' : ''}`}
+                animate={!isMobile ? {
                   opacity: hoveredId === work.id ? 1 : 0,
-                }}
+                } : { opacity: 1 }}
                 transition={{
-                  duration: 0.0,
+                  duration: 0.2,
                   ease: [0.4, 0, 0.2, 1],
                 }}
               >
@@ -89,14 +101,14 @@ const Work = () => {
                 >
                   <motion.div
                     className="button-container-inner"
-                    animate={{
+                    animate={!isMobile ? {
                       y: hoveredId === work.id ? 0 : 20,
-                    }}
+                    } : { y: 0 }}
                     transition={{
-                      duration: 0.4,
+                      duration: 0.2,
                       ease: [0.4, 0, 0.2, 1],
                     }}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={!isMobile ? { scale: 1.02 } : {}}
                     whileTap={{ scale: 0.98 }}
                   >
                     <img
